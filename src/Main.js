@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useRef} from 'react';
 import {connect} from "react-redux";
-import {StatusBar, Appearance} from "react-native";
+import {StatusBar, Appearance, Platform} from "react-native";
 import {
   Provider as PaperProvider,
   DefaultTheme as PaperDefaultTheme,
@@ -26,7 +26,7 @@ const Main = (props) => {
   // Switch Theme
   const paperTheme = (theme === defaultTheme) ? PaperDefaultTheme : PaperDarkTheme;
   const navigationTheme = (theme === defaultTheme) ? NavigationDefaultTheme : NavigationDarkTheme;
-  const barTheme = (theme === defaultTheme) ? 'dark-content' : 'light-content';
+  const barTheme = (theme === defaultTheme && Platform.OS === 'ios') ? 'dark-content' : 'light-content';
   const [barStyle, setBarStyle] = useState(barTheme);
 
   // BlockUI settings
@@ -55,13 +55,13 @@ const Main = (props) => {
 
   return (
     <PaperProvider theme={paperTheme}>
-      <StatusBar barStyle={barStyle} />
+      <StatusBar barStyle={barStyle} backgroundColor={paperTheme.colors.primary} />
       <NavigationContainer
         linking={linking}
         theme={navigationTheme}
         onStateChange={state => {
           const route = state.routes[state.index];
-          if (defaultTheme === 'light') {
+          if (Platform.OS === 'ios') {
             if (route.name === 'Welcome' && barStyle !== 'dark-content') {
               setBarStyle('dark-content');
             }
