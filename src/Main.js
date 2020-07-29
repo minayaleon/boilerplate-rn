@@ -18,16 +18,20 @@ import {UIProvider} from './app/context/ui';
 import {changeTheme} from './redux/actions/app';
 
 const Main = (props) => {
-  const checkThemeChange = useRef(false);
   const theme = props.app.theme;
-  const [deviceTheme, setDeviceTheme] = useState('');
   const defaultTheme = 'light';
+  const checkThemeChange = useRef(false);
+  const [deviceTheme, setDeviceTheme] = useState('');
 
   // Switch Theme
   const paperTheme = (theme === defaultTheme) ? PaperDefaultTheme : PaperDarkTheme;
   const navigationTheme = (theme === defaultTheme) ? NavigationDefaultTheme : NavigationDarkTheme;
   const barTheme = (theme === defaultTheme && Platform.OS === 'ios') ? 'dark-content' : 'light-content';
   const [barStyle, setBarStyle] = useState(barTheme);
+
+  // Android Only
+  const barBgTheme = (theme === defaultTheme) ? paperTheme.colors.primary : paperTheme.colors.background;
+  const [barBgStyle, setBarBgStyle] = useState(barBgTheme);
 
   // BlockUI settings
   const bgColor = (theme === defaultTheme) ? 'rgba(255, 255, 255, 0.8)' : 'rgba(0, 0, 0, 0.8)';
@@ -38,6 +42,14 @@ const Main = (props) => {
       props.dispatch(changeTheme({theme: deviceTheme}));
     }
   }, [deviceTheme]);
+
+  useEffect(() => {
+    if (checkThemeChange.current && Platform.OS === 'android') {
+      const screen = navigationRef.current.getCurrentRoute().name;
+      setBarBgStyle(barBgTheme);
+      checkStatusBar(screen);
+    }
+  }, [theme]);
 
   useEffect(() => {
     themeChangeListener();
@@ -53,22 +65,33 @@ const Main = (props) => {
     setDeviceTheme(currentTheme);
   };
 
+  const checkStatusBar = (screen) => {
+    if (Platform.OS === 'ios') {
+      if (screen === 'Welcome' && barStyle !== 'dark-content') {
+        setBarStyle('dark-content');
+      }
+      if (screen !== 'Welcome' && barStyle !== 'light-content') {
+        setBarStyle('light-content');
+      }
+    } else {
+      if (screen === 'Welcome' && theme === defaultTheme && barBgStyle !== paperTheme.colors.background) {
+        setBarBgStyle(paperTheme.colors.background);
+      }
+      if (screen !== 'Welcome' && theme === defaultTheme && barBgStyle !== paperTheme.colors.primary) {
+        setBarBgStyle(paperTheme.colors.primary);
+      }
+    }
+  };
+
   return (
     <PaperProvider theme={paperTheme}>
-      <StatusBar barStyle={barStyle} backgroundColor={paperTheme.colors.primary} />
+      <StatusBar barStyle={barStyle} backgroundColor={barBgStyle} />
       <NavigationContainer
         linking={linking}
         theme={navigationTheme}
         onStateChange={state => {
           const route = state.routes[state.index];
-          if (Platform.OS === 'ios') {
-            if (route.name === 'Welcome' && barStyle !== 'dark-content') {
-              setBarStyle('dark-content');
-            }
-            if (route.name !== 'Welcome' && barStyle !== 'light-content') {
-              setBarStyle('light-content');
-            }
-          }
+          checkStatusBar(route.name);
         }}
         ref={navigationRef}
       >
