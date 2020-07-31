@@ -6,25 +6,22 @@ export const useLocalization = () => {
   const [localizationConfigured, setLocalizationConfigured] = useState(false);
 
   useEffect(() => {
-    i18n.translations = {
-      en: {
-        signIn: 'Sign In',
-        reverseCurrencies: 'Reverse Currencies',
-        baseCurrency: 'Base Currency',
-        quoteCurrency: 'Quote Currency',
-      },
-      es: {
-        signIn: 'Ingresar',
-        reverseCurrencies: 'Monedas Inversas',
-        baseCurrency: 'Moneda Base',
-        quoteCurrency: 'Moneda de Cotización',
-      },
+
+    const langGetter = {
+      en: () => require('./langs/en.json'),
+      es: () => require('./langs/es.json')
     };
-    i18n.fallbacks = true;
-    i18n.defaultLocale = 'en';
 
     const handleLocalizationChange = () => {
-      i18n.locale = RNLocalize.getLocales()[0].languageCode;
+      const languageCode = RNLocalize.getLocales()[0].languageCode;
+      const lang = langGetter[languageCode]();
+      const translations = { 'en': langGetter['en'](), [languageCode]: lang };
+
+      i18n.locale = languageCode;
+      i18n.translations = translations
+      i18n.fallbacks = true;
+      i18n.defaultLocale = 'en';
+      console.log(lang);
     };
 
     handleLocalizationChange();

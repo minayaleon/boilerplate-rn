@@ -6,7 +6,7 @@ import AuthNavigator from './AuthNavigator';
 import MainNavigator from './MainNavigator';
 import {coreState} from '../app/state';
 import appReducer from '../app/reducers/app';
-import {useLocalization} from '../app/localization';
+import {useLocalization} from '../i18n/localization';
 
 const SplashStack = createStackNavigator();
 const initialState = {...coreState.navigator};

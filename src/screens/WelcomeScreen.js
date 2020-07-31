@@ -59,11 +59,11 @@ const WelcomeScreen = (props) => {
       </View>
       <View style={{height: 120, width:200, alignSelf: 'center'}}>
         <Button mode="contained" contentStyle={{height: 45}} onPress={() => navigation.navigate('SignIn')}>
-          {i18n.t('signIn')}
+          {i18n.t('app.signIn')}
         </Button>
         <View style={{height: 10}} />
         <Button mode="outlined" contentStyle={{height: 45}} onPress={() => navigation.navigate('SignUp')}>
-          Sign Up
+          {i18n.t('app.signUp')}
         </Button>
       </View>
     </SafeAreaView>
