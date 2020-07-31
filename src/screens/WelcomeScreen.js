@@ -5,6 +5,7 @@ import {appStyle} from '../assets/styles/app';
 import {Button} from 'react-native-paper';
 import {connect} from 'react-redux';
 import has from 'lodash/has';
+import i18n from 'i18n-js';
 import Logo from '../components/app/Logo';
 import {messages} from "../components/welcome/messages";
 import CarouselUI from "../components/welcome/CarouselUI";
@@ -58,7 +59,7 @@ const WelcomeScreen = (props) => {
       </View>
       <View style={{height: 120, width:200, alignSelf: 'center'}}>
         <Button mode="contained" contentStyle={{height: 45}} onPress={() => navigation.navigate('SignIn')}>
-          Sign In
+          {i18n.t('signIn')}
         </Button>
         <View style={{height: 10}} />
         <Button mode="outlined" contentStyle={{height: 45}} onPress={() => navigation.navigate('SignUp')}>

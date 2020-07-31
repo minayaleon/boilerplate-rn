@@ -6,6 +6,7 @@ import AuthNavigator from './AuthNavigator';
 import MainNavigator from './MainNavigator';
 import {coreState} from '../app/state';
 import appReducer from '../app/reducers/app';
+import {useLocalization} from '../app/localization';
 
 const SplashStack = createStackNavigator();
 const initialState = {...coreState.navigator};
@@ -21,6 +22,7 @@ const SplashNavigator = () => (
 );
 
 const AppNavigator = (props) => {
+  const {localizationConfigured} = useLocalization();
   const [state, dispatch] = useReducer(appReducer, initialState);
 
   useEffect(() => {
@@ -43,7 +45,7 @@ const AppNavigator = (props) => {
     }
   };
 
-  return state.isLoading ? (
+  return state.isLoading && !localizationConfigured ? (
     <SplashNavigator />
   ) : state.isLogged ? (
     <MainNavigator />
