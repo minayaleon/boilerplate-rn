@@ -13,7 +13,8 @@ export const useLocalization = () => {
     };
 
     const handleLocalizationChange = () => {
-      const languageCode = RNLocalize.getLocales()[0].languageCode;
+      // const languageCode = RNLocalize.getLocales()[0].languageCode;
+      const languageCode = 'es';
       const lang = langGetter[languageCode]();
       const translations = { 'en': langGetter['en'](), [languageCode]: lang };
 
@@ -21,7 +22,6 @@ export const useLocalization = () => {
       i18n.translations = translations
       i18n.fallbacks = true;
       i18n.defaultLocale = 'en';
-      console.log(lang);
     };
 
     handleLocalizationChange();

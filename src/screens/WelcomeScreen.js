@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {View} from 'react-native';
 import SafeAreaView from 'react-native-safe-area-view';
 import {appStyle} from '../assets/styles/app';
@@ -20,7 +20,6 @@ const WelcomeScreen = (props) => {
   const {route, navigation, dispatch} = props;
   const userService = new UserService();
   let items = messages();
-  const [bg, setBg] = useState(items[0].bg);
 
   const signIn = async (accessToken) => {
     try {
@@ -55,15 +54,15 @@ const WelcomeScreen = (props) => {
         <Logo />
       </View>
       <View style={{flex: 2, justifyContent:'center'}}>
-        <CarouselUI setBg={setBg} messages={items} />
+        <CarouselUI messages={items} />
       </View>
       <View style={{height: 120, width:200, alignSelf: 'center'}}>
         <Button mode="contained" contentStyle={{height: 45}} onPress={() => navigation.navigate('SignIn')}>
-          {i18n.t('app.signIn')}
+          {i18n.t('app.btn.signIn')}
         </Button>
         <View style={{height: 10}} />
         <Button mode="outlined" contentStyle={{height: 45}} onPress={() => navigation.navigate('SignUp')}>
-          {i18n.t('app.signUp')}
+          {i18n.t('app.btn.signUp')}
         </Button>
       </View>
     </SafeAreaView>

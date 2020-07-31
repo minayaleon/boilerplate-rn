@@ -1,6 +1,39 @@
 {
   "app": {
-    "signIn": "Sign In",
-    "signUp": "Sign Up"
+    "msg": {
+      "canNotUpdateUser": "Can not update user",
+      "canNotGetUser": "Can not get user",
+      "snap": "Snap!"
+    },
+    "btn": {
+      "signIn": "Sign In",
+      "signUp": "Sign Up"
+    }
+  },
+  "signIn": {
+    "txt": {
+      "title": "Sign In",
+      "forgotPassword": "Forgot your password?",
+      "notAccount": "Don't have a account?"
+    },
+    "form": {
+      "email": {
+        "label": "Email",
+        "rules": {
+          "type": "Invalid email.",
+          "required": "Please enter your email address."
+        }
+      },
+      "password": {
+        "label": "Password",
+        "rules": {
+          "required": "Please enter a password.",
+          "min": "Password is too short, should be 8 chars minimum."
+        }
+      }
+    },
+    "btn": {
+      "logIn": "Log In"
+    }
   }
 }

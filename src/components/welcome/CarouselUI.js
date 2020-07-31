@@ -30,7 +30,7 @@ const CarouselUI = props => {
         autoplayInterval={5000}
         inactiveSlideScale={1}
         onSnapToItem={(index) => {
-          props.setBg(props.messages[index].bg);
+          // props.setBg(props.messages[index].bg);
           setActive(index);
         }}
       />

@@ -1,6 +1,39 @@
 {
   "app": {
-    "signIn": "Ingresar",
-    "signUp": "Registrate"
+    "msg": {
+      "canNotUpdateUser": "No podemos actualizar tus datos",
+      "canNotGetUser": "No podemos obtener tus datos",
+      "snap": "Problemas"
+    },
+    "btn": {
+      "signIn": "Ingresar",
+      "signUp": "Registrate"
+    }
+  },
+  "signIn": {
+    "txt": {
+      "title": "Inicia Sesión",
+      "forgotPassword": "¿Olvidaste tu contraseña?",
+      "notAccount": "¿No estas regitsrado?"
+    },
+    "form": {
+      "email": {
+        "label": "Correo Electrónico",
+        "rules": {
+          "type": "Correo electrónico inválido.",
+          "required": "Ingresa tu orreo electrónico."
+        }
+      },
+      "password": {
+        "label": "Contraseña",
+        "rules": {
+          "required": "Ingresa tu contraseña.",
+          "min": "Tu contraseña debe ser de 8 caracteres (mínimo)."
+        }
+      }
+    },
+    "btn": {
+      "logIn": "Ingresar"
+    }
   }
 }
