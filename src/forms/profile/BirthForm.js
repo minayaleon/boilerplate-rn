@@ -117,7 +117,9 @@ const BirthForm = (props) => {
                 }
                 propsForm.setFieldValue('birth', value);
               } else {
-                setShow(false);
+                if (Platform.OS === 'android') {
+                  setShow(false);
+                }
               }
             }}
             textColor={colors.text}
