@@ -1,10 +1,10 @@
-import React from 'react';
-import {Button, HelperText} from 'react-native-paper';
+import React, {useState} from 'react';
+import {Button, HelperText, Text, IconButton} from 'react-native-paper';
 import {Formik} from 'formik';
 import * as Yup from 'yup';
-import {View} from 'react-native';
+import {Platform, View} from 'react-native';
 import {connect} from 'react-redux';
-import {keys, pick} from 'lodash';
+import {isEmpty, keys, pick} from 'lodash';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import moment from 'moment';
 import {formStyle} from '../../assets/styles/form';
@@ -16,6 +16,7 @@ import {setAuthUser} from '../../redux/actions/user';
 import ProfileHeader from '../../components/ProfileHeader';
 import * as navigation from '../../navigator/RootNavigation';
 import {useTheme} from 'react-native-paper';
+import AppHelper from '../../helpers/AppHelper';
 
 const BirthForm = (props) => {
   const {user} = props;
@@ -24,6 +25,11 @@ const BirthForm = (props) => {
   const minAge = 16;
   const maxDate = moment().subtract(minAge, 'years').toDate();
 
+  // Android Only
+  const [show, setShow] = useState(false);
+  const currentBirth = !isEmpty(user.birth) ? AppHelper.getBirth(user.birth) : '...';
+  const [birth, setBirth] = useState(currentBirth);
+
   const validationSchema = Yup.object().shape({
     birth: Yup.date()
       .required('Please enter your birthday.')
@@ -31,7 +37,6 @@ const BirthForm = (props) => {
   });
 
   const initialValues = pick(user, ['birth']);
-  console.log(initialValues);
   if (initialValues.birth === null) {
     initialValues.birth = moment().toDate();
   } else {
@@ -42,7 +47,8 @@ const BirthForm = (props) => {
   meService.setAccessToken(user.accessToken);
 
   const onSend = async (formData) => {
-    blockUI.current.open(true);
+    console.log(formData);
+    /*blockUI.current.open(true);
 
     try {
       const r = await meService.update(formData);
@@ -61,11 +67,15 @@ const BirthForm = (props) => {
       blockUI.current.open(false);
       let message = MainHelper.getError(error);
       dialogUI.current.open('Snap!', message);
-    }
+    }*/
   };
 
   const onCancel = () => {
     navigation.goBack();
+  };
+
+  const onChoose = () => {
+    setShow(true);
   };
 
   return (
@@ -77,15 +87,42 @@ const BirthForm = (props) => {
       {(propsForm) => (
         <View style={formStyle.panForm}>
           <ProfileHeader title="Birthday" fields="birthday" />
+          {Platform.OS === 'android' &&
+          <View style={{alignItems: 'center'}}>
+            <View style={{flexDirection: 'row', width: 160}}>
+              <View style={{width: 115}}>
+                <Text style={{fontSize: 20, textAlign: 'right', marginTop: 10}}>{birth}</Text>
+              </View>
+              <View style={{width: 45}}>
+                <IconButton
+                  icon="calendar"
+                  size={24}
+                  onPress={onChoose}
+                />
+              </View>
+            </View>
+          </View>}
+          {Platform.OS === 'ios' || show && (
           <DateTimePicker
             testID="dateTimePicker"
             value={propsForm.values.birth}
             mode="date"
-            is24Hour={true}
-            display="default"
-            onChange={(event, value) => propsForm.setFieldValue('birth', value)}
+            display="calendar"
+            onChange={(event, value) => {
+              if (value !== undefined) {
+                if (Platform.OS === 'android') {
+                  setShow(false);
+                  const newBirth = AppHelper.getBirth(value);
+                  setBirth(newBirth);
+                }
+                propsForm.setFieldValue('birth', value);
+              } else {
+                setShow(false);
+              }
+            }}
             textColor={colors.text}
           />
+          )}
           <HelperText type="error" style={{textAlign: 'center'}}>
             {propsForm.touched.birth && propsForm.errors.birth}
           </HelperText>

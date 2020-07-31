@@ -15,13 +15,14 @@ import MeService from '../services/MeService';
 import {coreState} from '../redux/state';
 import {setAuthUser} from '../redux/actions/user';
 import ProfileAvatar from "../components/ProfileAvatar";
+import AppHelper from '../helpers/AppHelper';
 
 const ProfileScreen = (props) => {
   const {navigation, user} = props;
   const {dialogUI, blockUI} = useGlobalUI();
 
   const gender = !isEmpty(user.gender) ? user.gender : '...';
-  const birth = !isEmpty(user.birth) ? user.birth : '...';
+  const birth = !isEmpty(user.birth) ? AppHelper.getBirth(user.birth) : '...';
   const country = !isEmpty(user.country.name) ? user.country.name : '...';
   const code = !isEmpty(user.country.code) ? ', ' + user.country.code : '';
 
