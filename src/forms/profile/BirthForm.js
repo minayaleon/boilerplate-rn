@@ -48,7 +48,7 @@ const BirthForm = (props) => {
 
   const onSend = async (formData) => {
     console.log(formData);
-    /*blockUI.current.open(true);
+    blockUI.current.open(true);
 
     try {
       const r = await meService.update(formData);
@@ -67,7 +67,7 @@ const BirthForm = (props) => {
       blockUI.current.open(false);
       let message = MainHelper.getError(error);
       dialogUI.current.open('Snap!', message);
-    }*/
+    }
   };
 
   const onCancel = () => {
