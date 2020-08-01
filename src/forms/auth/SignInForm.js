@@ -23,11 +23,11 @@ const SignInForm = (props) => {
 
   const SignInSchema = Yup.object().shape({
     email: Yup.string()
-      .email(i18n.t('signIn.form.email.rules.type'))
-      .required(i18n.t('signIn.form.email.rules.required')),
+      .email(i18n.t('app.form.email.rules.type'))
+      .required(i18n.t('app.form.email.rules.required')),
     password: Yup.string()
-      .required(i18n.t('signIn.form.password.rules.required'))
-      .min(8, i18n.t('signIn.form.password.rules.min')),
+      .required(i18n.t('app.form.password.rules.required'))
+      .min(8, i18n.t('app.form.password.rules.min')),
   });
 
   const initialValues = {...formState.signIn};
@@ -44,7 +44,7 @@ const SignInForm = (props) => {
 
       const responseB = await userService.me();
       if (!responseB || !has(responseB, 'data')) {
-        MainHelper.sendError({message: i18n.t('app.msg.canNotGetUser')});
+        MainHelper.sendError({message: i18n.t('app.txt.canNotGetUser')});
       }
       blockUI.current.open(false);
 
@@ -55,7 +55,7 @@ const SignInForm = (props) => {
     } catch (error) {
       blockUI.current.open(false);
       let message = MainHelper.getError(error);
-      dialogUI.current.open(i18n.t('app.msg.snap'), message);
+      dialogUI.current.open(i18n.t('app.txt.snap'), message);
     }
   };
 
@@ -79,7 +79,7 @@ const SignInForm = (props) => {
           <View style={formStyle.panForm}>
             <TextInput
               mode={'outlined'}
-              placeholder={i18n.t('signIn.form.email.label')}
+              placeholder={i18n.t('app.form.email.label')}
               value={propsForm.values.email}
               autoCapitalize={'none'}
               onChangeText={propsForm.handleChange('email')}
@@ -93,7 +93,7 @@ const SignInForm = (props) => {
             <TextInput
               mode={'outlined'}
               secureTextEntry={true}
-              placeholder={i18n.t('signIn.form.password.label')}
+              placeholder={i18n.t('app.form.password.label')}
               value={propsForm.values.password}
               onChangeText={propsForm.handleChange('password')}
               onBlur={propsForm.handleBlur('password')}

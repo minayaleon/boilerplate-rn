@@ -1,6 +1,6 @@
 {
   "app": {
-    "msg": {
+    "txt": {
       "canNotUpdateUser": "Can not update user",
       "canNotGetUser": "Can not get user",
       "terms": "Terms of Service",
@@ -42,7 +42,7 @@
         "label": "Confirm Password",
         "rules": {
           "oneOf": "Passwords must match",
-          "required": "Please enter a password.",
+          "required": "Please confirm your password.",
           "min": "Password must be at least 8 characters."
         }
       }
@@ -63,7 +63,9 @@
       "title": "Sign Up",
       "footer1": "By signing up you accept our",
       "footer2": "and",
-      "alreadyAccount": "Already have an account?"
+      "alreadyAccount": "Already have an account?",
+      "dlgTitle": "Welcome",
+      "dlgMessage": "You will receive an email to confirm your account"
     },
     "btn": {
       "join": "Join"

@@ -1,8 +1,9 @@
-import React, {createRef} from 'react';
+import React from 'react';
 import {Button, HelperText, Text, TextInput} from 'react-native-paper';
 import {Formik} from 'formik';
 import * as Yup from 'yup';
 import {View} from 'react-native';
+import i18n from 'i18n-js';
 import {formState} from "../state";
 import {appStyle} from '../../assets/styles/app';
 import {formStyle} from '../../assets/styles/form';
@@ -15,41 +16,40 @@ const SignUpForm = props => {
   const {dialogUI, blockUI} = useGlobalUI();
 
   const SignUpSchema = Yup.object().shape({
-    firstName: Yup.string().required('Please enter your first name.'),
-    lastName: Yup.string().required('Please enter your last name.'),
+    firstName: Yup.string().required(i18n.t('app.form.firstName.rules.required')),
+    lastName: Yup.string().required(i18n.t('app.form.lastName.rules.required')),
     email: Yup.string()
-      .email('Invalid email.')
-      .required('Please enter your email address.'),
+      .email(i18n.t('app.form.email.rules.type'))
+      .required(i18n.t('app.form.email.rules.required')),
     password: Yup.string()
-      .required('Please enter a password.')
-      .min(8, 'Password is too short, should be 8 chars minimum.'),
+      .required(i18n.t('app.form.password.rules.required'))
+      .min(8, i18n.t('app.form.password.rules.min')),
     passwordConfirmation: Yup.string()
-      .oneOf([Yup.ref('password'), null], 'Passwords must match')
-      .required('Please confirm your password.')
-      .min(8, 'Password is too short, should be 8 chars minimum.'),
+      .oneOf([Yup.ref('password'), null], i18n.t('app.form.passwordConfirmation.rules.oneOf'))
+      .required(i18n.t('app.form.passwordConfirmation.rules.required'))
+      .min(8, i18n.t('app.form.passwordConfirmation.rules.min'))
   });
 
   const initialValues = {...formState.signUp};
   const authService = new AuthService();
   // const sleep = (m) => new Promise((r) => setTimeout(r, m));
 
-  const onSend = async (values) => {
+  const onSend = async (formData) => {
     blockUI.current.open(true);
 
     try {
-      const formData = MainHelper.toSnakeCase(values);
       // await sleep(500);
       await authService.signUp(formData);
       blockUI.current.open(false);
       dialogUI.current.open(
-        'Welcome',
-        'You will receive an email to confirm your account',
+        i18n.t('signUp.txt.dlgTitle'),
+        i18n.t('signUp.txt.dlgMessage'),
         {navigation, screen: 'Welcome'},
       );
     } catch (error) {
       blockUI.current.open(false);
       let message = MainHelper.getLaravelError(error, 'email');
-      dialogUI.current.open('Snap!', message);
+      dialogUI.current.open(i18n.t('app.txt.snap'), message);
     }
   };
 
@@ -69,11 +69,11 @@ const SignUpForm = props => {
       onSubmit={(values) => onSend(values)}>
       {(propsForm) => (
         <>
-          <Text style={[appStyle.txtTitle, appStyle.setCenter]}>Sign Up</Text>
+          <Text style={[appStyle.txtTitle, appStyle.setCenter]}>{i18n.t('signUp.txt.title')}</Text>
           <View style={formStyle.panForm}>
             <TextInput
               mode={'outlined'}
-              placeholder={'First Name'}
+              placeholder={i18n.t('app.form.firstName.label')}
               value={propsForm.values.firstName}
               onChangeText={propsForm.handleChange('firstName')}
               onBlur={propsForm.handleBlur('firstName')}
@@ -84,7 +84,7 @@ const SignUpForm = props => {
             </HelperText>
             <TextInput
               mode={'outlined'}
-              placeholder={'Last Name'}
+              placeholder={i18n.t('app.form.lastName.label')}
               value={propsForm.values.lastName}
               onChangeText={propsForm.handleChange('lastName')}
               onBlur={propsForm.handleBlur('lastName')}
@@ -94,7 +94,7 @@ const SignUpForm = props => {
             </HelperText>
             <TextInput
               mode={'outlined'}
-              placeholder={'Email'}
+              placeholder={i18n.t('app.form.email.label')}
               value={propsForm.values.email}
               autoCapitalize={'none'}
               onChangeText={propsForm.handleChange('email')}
@@ -107,7 +107,7 @@ const SignUpForm = props => {
             <TextInput
               mode={'outlined'}
               secureTextEntry={true}
-              placeholder={'Password'}
+              placeholder={i18n.t('app.form.password.label')}
               value={propsForm.values.password}
               onChangeText={propsForm.handleChange('password')}
               onBlur={propsForm.handleBlur('password')}
@@ -118,7 +118,7 @@ const SignUpForm = props => {
             <TextInput
               mode={'outlined'}
               secureTextEntry={true}
-              placeholder={'Confirm Password'}
+              placeholder={i18n.t('app.form.passwordConfirmation.label')}
               value={propsForm.values.passwordConfirmation}
               onChangeText={propsForm.handleChange('passwordConfirmation')}
               onBlur={propsForm.handleBlur('passwordConfirmation')}
@@ -127,20 +127,20 @@ const SignUpForm = props => {
               {propsForm.touched.passwordConfirmation && propsForm.errors.passwordConfirmation}
             </HelperText>
             <Text style={[appStyle.setCenter, appStyle.mrg20TB]}>
-              By signing up you accept our{'  '}
-              <Text style={appStyle.txtBold} onPress={goToTerms}>Terms of Service</Text>
-              {'  '}and{'  '}
-              <Text style={appStyle.txtBold} onPress={goToTerms}>Privacy Policy</Text>
+              {i18n.t('signUp.txt.footer1')}{'  '}
+              <Text style={appStyle.txtBold} onPress={goToTerms}>{i18n.t('app.txt.terms')}</Text>
+              {'  '}{i18n.t('signUp.txt.footer2')}{'  '}
+              <Text style={appStyle.txtBold} onPress={goToTerms}>{i18n.t('app.txt.policy')}</Text>
             </Text>
             <Button
               mode="contained"
               contentStyle={formStyle.btnMain}
               onPress={propsForm.handleSubmit}>
-              Join
+              {i18n.t('signUp.btn.join')}
             </Button>
             <Text style={[appStyle.setCenter, appStyle.mrg10T]}>
-              Don't have an account?{'  '}
-              <Text style={appStyle.txtTitle} onPress={goToSignIn}>Sign In</Text>
+              {i18n.t('signUp.txt.alreadyAccount')}{'  '}
+              <Text style={appStyle.txtTitle} onPress={goToSignIn}>{i18n.t('app.btn.signIn')}</Text>
             </Text>
           </View>
         </>
