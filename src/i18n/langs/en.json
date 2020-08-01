@@ -10,40 +10,6 @@
     "btn": {
       "signIn": "Sign In",
       "signUp": "Sign Up"
-    }
-  },
-  "signIn": {
-    "txt": {
-      "title": "Sign In",
-      "forgotPassword": "Forgot your password?",
-      "notAccount": "Don't have a account?"
-    },
-    "form": {
-      "email": {
-        "label": "Email",
-        "rules": {
-          "type": "Invalid email.",
-          "required": "Enter your email address."
-        }
-      },
-      "password": {
-        "label": "Password",
-        "rules": {
-          "required": "Enter a password.",
-          "min": "Password must be at least 8 characters."
-        }
-      }
-    },
-    "btn": {
-      "logIn": "Log In"
-    }
-  },
-  "signUp": {
-    "txt": {
-      "title": "Sign Up",
-      "footer1": "By signing up you accept our",
-      "footer2": "and",
-      "alreadyAccount": "Already have an account?"
     },
     "form": {
       "firstName": {
@@ -80,6 +46,24 @@
           "min": "Password must be at least 8 characters."
         }
       }
+    }
+  },
+  "signIn": {
+    "txt": {
+      "title": "Sign In",
+      "forgotPassword": "Forgot your password?",
+      "notAccount": "Don't have a account?"
+    },
+    "btn": {
+      "logIn": "Log In"
+    }
+  },
+  "signUp": {
+    "txt": {
+      "title": "Sign Up",
+      "footer1": "By signing up you accept our",
+      "footer2": "and",
+      "alreadyAccount": "Already have an account?"
     },
     "btn": {
       "join": "Join"
