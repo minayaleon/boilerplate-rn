@@ -3,6 +3,8 @@
     "msg": {
       "canNotUpdateUser": "Can not update user",
       "canNotGetUser": "Can not get user",
+      "terms": "Terms of Service",
+      "policy": "Privacy Policy",
       "snap": "Snap!"
     },
     "btn": {
@@ -21,19 +23,66 @@
         "label": "Email",
         "rules": {
           "type": "Invalid email.",
-          "required": "Please enter your email address."
+          "required": "Enter your email address."
+        }
+      },
+      "password": {
+        "label": "Password",
+        "rules": {
+          "required": "Enter a password.",
+          "min": "Password must be at least 8 characters."
+        }
+      }
+    },
+    "btn": {
+      "logIn": "Log In"
+    }
+  },
+  "signUp": {
+    "txt": {
+      "title": "Sign Up",
+      "footer1": "By signing up you accept our",
+      "footer2": "and",
+      "alreadyAccount": "Already have an account?"
+    },
+    "form": {
+      "firstName": {
+        "label": "First Name",
+        "rules": {
+          "required": "Enter your first name."
+        }
+      },
+      "lastName": {
+        "label": "Last Name",
+        "rules": {
+          "required": "Enter your last name."
+        }
+      },
+      "email": {
+        "label": "Email",
+        "rules": {
+          "type": "Invalid email.",
+          "required": "Enter your email address."
         }
       },
       "password": {
         "label": "Password",
         "rules": {
           "required": "Please enter a password.",
-          "min": "Password is too short, should be 8 chars minimum."
+          "min": "Password must be at least 8 characters."
+        }
+      },
+      "passwordConfirmation": {
+        "label": "Confirm Password",
+        "rules": {
+          "oneOf": "Passwords must match",
+          "required": "Please enter a password.",
+          "min": "Password must be at least 8 characters."
         }
       }
     },
     "btn": {
-      "logIn": "Log In"
+      "join": "Join"
     }
   }
 }

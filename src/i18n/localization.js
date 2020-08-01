@@ -13,8 +13,8 @@ export const useLocalization = () => {
     };
 
     const handleLocalizationChange = () => {
-      // const languageCode = RNLocalize.getLocales()[0].languageCode;
-      const languageCode = 'es';
+      const languageCode = RNLocalize.getLocales()[0].languageCode;
+      // const languageCode = 'es';
       const lang = langGetter[languageCode]();
       const translations = { 'en': langGetter['en'](), [languageCode]: lang };
 
