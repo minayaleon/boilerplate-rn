@@ -71,5 +71,16 @@
     "btn": {
       "join": "Unete"
     }
+  },
+  "recoverPassword": {
+    "txt": {
+      "title": "Recuperar Contraseña",
+      "subtitle": "Ingrese su correo electrónico para recibir instrucciones sobre cómo recuperar tu contraseña",
+      "dlgTitle": "Recuperar Contraseña",
+      "dlgMessage": "Recibirá un correo electrónico para poder cambiar su contraseña."
+    },
+    "btn": {
+      "recover": "Recuperar"
+    }
   }
 }
