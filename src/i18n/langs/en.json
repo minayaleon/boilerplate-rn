@@ -5,7 +5,8 @@
       "canNotGetUser": "Can not get user",
       "terms": "Terms of Service",
       "policy": "Privacy Policy",
-      "snap": "Snap!"
+      "snap": "Snap!",
+      "loading": "Loading..."
     },
     "btn": {
       "signIn": "Sign In",
@@ -69,6 +70,17 @@
     },
     "btn": {
       "join": "Join"
+    }
+  },
+  "recoverPassword": {
+    "txt": {
+      "title": "Recover Password",
+      "subtitle": "Enter your email to receive instructions on how recover your password",
+      "dlgTitle": "Recover Password",
+      "dlgMessage": "You will receive an email to change your password"
+    },
+    "btn": {
+      "recover": "Recover"
     }
   }
 }

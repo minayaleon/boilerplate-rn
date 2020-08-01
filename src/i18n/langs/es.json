@@ -5,7 +5,8 @@
       "canNotGetUser": "No podemos obtener tus datos",
       "terms": "Términos de Servicio",
       "policy": "Política de Privacidad",
-      "snap": "Problemas"
+      "snap": "Problemas",
+      "loading": "Cargando..."
     },
     "btn": {
       "signIn": "Ingresar",

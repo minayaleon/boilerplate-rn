@@ -1,4 +1,5 @@
 import React, {createRef, useMemo} from 'react';
+import i18n from 'i18n-js';
 import {DialogUI, BlockUI} from '@codepso/rn-helper';
 
 const UIContext = React.createContext({});
@@ -6,7 +7,7 @@ const UIContext = React.createContext({});
 const UIProvider = props => {
   const {bgColor, txtColor} = props;
   const animation = 'none'; // none, slide
-  const message = 'Loading...';
+  const message = i18n.t('app.txt.loading');
 
   const blockUI = createRef();
   const dialogUI = createRef();

@@ -4,6 +4,7 @@ import * as Yup from 'yup';
 import {View} from 'react-native';
 import {Button, Text, TextInput, HelperText} from 'react-native-paper';
 import {MainHelper} from '@codepso/rn-helper';
+import i18n from 'i18n-js';
 import {formState} from '../state';
 import {appStyle} from '../../assets/styles/app';
 import {formStyle} from '../../assets/styles/form';
@@ -17,8 +18,8 @@ const RecoverPasswordForm = () => {
 
   const RecoverPasswordSchema = Yup.object().shape({
     email: Yup.string()
-      .email('Invalid email.')
-      .required('Please enter your email address.')
+      .email(i18n.t('app.form.email.rules.type'))
+      .required(i18n.t('app.form.email.rules.required'))
   });
 
   const initialValues = {...formState.recoverPassword};
@@ -31,14 +32,14 @@ const RecoverPasswordForm = () => {
       await authService.recoverPassword(values);
       blockUI.current.open(false);
       dialogUI.current.open(
-        'Recover Password',
-        'You will receive an email to change your password',
+        i18n.t('recoverPassword.txt.dlgTitle'),
+        i18n.t('recoverPassword.txt.dlgMessage'),
         {navigation, screen: 'Welcome'},
       );
     } catch (error) {
       blockUI.current.open(false);
       let message = MainHelper.getError(error);
-      dialogUI.current.open('Snap!', message);
+      dialogUI.current.open(i18n.t('app.txt.snap'), message);
     }
   };
 
@@ -51,14 +52,14 @@ const RecoverPasswordForm = () => {
       {(propsForm) => (
         <>
           <View style={{height: 10}} />
-          <Text style={[appStyle.txtTitle, appStyle.setCenter]}>Recover Password</Text>
+          <Text style={[appStyle.txtTitle, appStyle.setCenter]}>{i18n.t('recoverPassword.txt.title')}</Text>
           <View style={formStyle.panForm}>
             <Text style={[appStyle.setCenter, appStyle.mrg20B]}>
-              Enter your email to receive instructions on how recover your password
+              {i18n.t('recoverPassword.txt.subtitle')}
             </Text>
             <TextInput
               mode={'outlined'}
-              placeholder={'Email'}
+              placeholder={i18n.t('app.form.email.label')}
               value={propsForm.values.email}
               autoCapitalize={'none'}
               onChangeText={propsForm.handleChange('email')}
@@ -74,7 +75,7 @@ const RecoverPasswordForm = () => {
               mode="contained"
               contentStyle={formStyle.btnMain}
               onPress={propsForm.handleSubmit}>
-              Recover
+              {i18n.t('recoverPassword.btn.recover')}
             </Button>
           </View>
         </>
