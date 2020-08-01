@@ -82,5 +82,18 @@
     "btn": {
       "recover": "Recover"
     }
+  },
+  "resetPassword": {
+    "txt": {
+      "title": "Reset Password",
+      "subtitle": "Please enter a new password",
+      "expiredToken": "The token has expired, request a new link again to recover your password",
+      "sendNewEmail": "Send new email",
+      "dlgTitle": "Reset Password",
+      "dlgMessage": "Your passworda has been updated, click OK to continue"
+    },
+    "btn": {
+      "reset": "Reset"
+    }
   }
 }

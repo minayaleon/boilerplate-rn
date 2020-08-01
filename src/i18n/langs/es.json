@@ -82,5 +82,18 @@
     "btn": {
       "recover": "Recuperar"
     }
+  },
+  "resetPassword": {
+    "txt": {
+      "title": "Restablecer Contraseña",
+      "subtitle": "Ingrese una nueva contraseña",
+      "expiredToken": "El token ha caducado, solicite un nuevo enlace para recuperar su contraseña",
+      "sendNewEmail": "Enviar nuevo correo electrónico",
+      "dlgTitle": "Restablecer Contraseña",
+      "dlgMessage": "Su contraseña ha sido actualizada, haga clic en Aceptar para continuar"
+    },
+    "btn": {
+      "reset": "Reset"
+    }
   }
 }
