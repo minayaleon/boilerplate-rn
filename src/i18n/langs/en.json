@@ -6,7 +6,8 @@
       "terms": "Terms of Service",
       "policy": "Privacy Policy",
       "snap": "Snap!",
-      "loading": "Loading..."
+      "loading": "Loading...",
+      "darkMode": "Dark mode"
     },
     "btn": {
       "signIn": "Sign In",
@@ -46,6 +47,18 @@
           "required": "Please confirm your password.",
           "min": "Password must be at least 8 characters."
         }
+      }
+    },
+    "nav": {
+      "home": "Home",
+      "profile": "Profile",
+      "preferences": "Preferences",
+      "logout": "Logout"
+    },
+    "dlg": {
+      "logout": {
+        "title": "Log Out",
+        "content": "Are you sure to log out?"
       }
     }
   },

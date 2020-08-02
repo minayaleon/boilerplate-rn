@@ -6,6 +6,7 @@ import {
 } from '@react-navigation/drawer';
 import {Drawer, Text, TouchableRipple, Switch} from 'react-native-paper';
 import {connect} from 'react-redux';
+import i18n from 'i18n-js';
 import {drawerStyle} from '../assets/styles/drawer';
 import {useGlobalUI} from '../app/context/ui';
 import * as navigation from '../navigator/RootNavigation';
@@ -31,15 +32,15 @@ const DrawerContent = props => {
         <ProfileAvatar user={user} selectPhoto={selectPhoto} section="drawer" />
         <Drawer.Section style={drawerStyle.panSection}>
           <DrawerItem
-            label="Home"
+            label={i18n.t('app.nav.home')}
             onPress={() => navigation.navigate('Home')}
           />
           <DrawerItem
-            label="Profile"
+            label={i18n.t('app.nav.profile')}
             onPress={() => navigation.navigate('Profile')}
           />
           <DrawerItem
-            label="Preferences"
+            label={i18n.t('app.nav.preferences')}
             onPress={() => navigation.navigate('Preferences')}
           />
         </Drawer.Section>
@@ -47,7 +48,7 @@ const DrawerContent = props => {
         <Drawer.Section>
           <TouchableRipple onPress={toggleTheme}>
             <View style={drawerStyle.panPreference}>
-              <Text>Dark Theme</Text>
+              <Text>{i18n.t('app.txt.darkMode')}</Text>
               <View pointerEvents="none">
                 <Switch value={app.theme === 'dark'}/>
               </View>
@@ -56,11 +57,11 @@ const DrawerContent = props => {
         </Drawer.Section>}
         <Drawer.Section>
           <DrawerItem
-            label="Logout"
+            label={i18n.t('app.nav.logout')}
             onPress={() => {
               dialogUI.current.open(
-                'Log Out',
-                'Are you sure to log out?',
+                i18n.t('app.dlg.logout.title'),
+                i18n.t('app.dlg.logout.content'),
                 {navigation, screen: 'SignOut'},
                 true);
             }}
