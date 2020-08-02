@@ -42,8 +42,8 @@ const SignUpForm = props => {
       await authService.signUp(formData);
       blockUI.current.open(false);
       dialogUI.current.open(
-        i18n.t('signUp.txt.dlgTitle'),
-        i18n.t('signUp.txt.dlgMessage'),
+        i18n.t('signUp.dlg.main.title'),
+        i18n.t('signUp.dlg.main.content'),
         {navigation, screen: 'Welcome'},
       );
     } catch (error) {

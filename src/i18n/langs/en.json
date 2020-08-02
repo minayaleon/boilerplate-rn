@@ -77,23 +77,31 @@
       "title": "Sign Up",
       "footer1": "By signing up you accept our",
       "footer2": "and",
-      "alreadyAccount": "Already have an account?",
-      "dlgTitle": "Welcome",
-      "dlgMessage": "You will receive an email to confirm your account"
+      "alreadyAccount": "Already have an account?"
     },
     "btn": {
       "join": "Join"
+    },
+    "dlg": {
+      "main": {
+        "title": "Welcome",
+        "content": "You will receive an email to confirm your account"
+      }
     }
   },
   "recoverPassword": {
     "txt": {
       "title": "Recover Password",
-      "subtitle": "Enter your email to receive instructions on how recover your password",
-      "dlgTitle": "Recover Password",
-      "dlgMessage": "You will receive an email to change your password"
+      "subtitle": "Enter your email to receive instructions on how recover your password"
     },
     "btn": {
       "recover": "Recover"
+    },
+    "dlg": {
+      "main": {
+        "title": "Recover Password",
+        "content": "You will receive an email to change your password"
+      }
     }
   },
   "resetPassword": {
@@ -101,12 +109,16 @@
       "title": "Reset Password",
       "subtitle": "Please enter a new password",
       "expiredToken": "The token has expired, request a new link again to recover your password",
-      "sendNewEmail": "Send new email",
-      "dlgTitle": "Reset Password",
-      "dlgMessage": "Your passworda has been updated, click OK to continue"
+      "sendNewEmail": "Send new email"
     },
     "btn": {
       "reset": "Reset"
+    },
+    "dlg": {
+      "main": {
+        "title": "Reset Password",
+        "content": "Your password has been updated, click OK to continue"
+      }
     }
   }
 }

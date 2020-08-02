@@ -37,8 +37,8 @@ const ResetPasswordForm = props => {
       await authService.resetPassword(formData);
       blockUI.current.open(false);
       dialogUI.current.open(
-        i18n.t('resetPassword.txt.dlgTitle'),
-        i18n.t('resetPassword.txt.dlgMessage'),
+        i18n.t('resetPassword.dlg.main.title'),
+        i18n.t('resetPassword.dlg.main.content'),
         {navigation, screen: 'SignIn'},
       );
     } catch (error) {

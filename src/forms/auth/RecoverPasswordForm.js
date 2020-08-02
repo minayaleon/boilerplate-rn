@@ -32,8 +32,8 @@ const RecoverPasswordForm = () => {
       await authService.recoverPassword(values);
       blockUI.current.open(false);
       dialogUI.current.open(
-        i18n.t('recoverPassword.txt.dlgTitle'),
-        i18n.t('recoverPassword.txt.dlgMessage'),
+        i18n.t('recoverPassword.dlg.main.title'),
+        i18n.t('recoverPassword.dlg.main.content'),
         {navigation, screen: 'Welcome'},
       );
     } catch (error) {
