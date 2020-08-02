@@ -6,11 +6,14 @@
       "terms": "Términos de Servicio",
       "policy": "Política de Privacidad",
       "snap": "Problemas",
-      "loading": "Cargando..."
+      "loading": "Cargando...",
+      "darkMode": "Modo oscuro"
     },
     "btn": {
       "signIn": "Ingresar",
-      "signUp": "Registrate"
+      "signUp": "Registrate",
+      "ok": "Ok",
+      "cancel": "Cancelar"
     },
     "form": {
       "firstName": {
@@ -47,6 +50,18 @@
           "min": "La contraseña debe tener al menos 8 caracteres."
         }
       }
+    },
+    "nav": {
+      "home": "Home",
+      "profile": "Perfil",
+      "preferences": "Preferencias",
+      "logout": "Salir"
+    },
+    "dlg": {
+      "logout": {
+        "title": "Salir",
+        "content": "¿Esta seguro de salir de la aplicación?"
+      }
     }
   },
   "signIn": {
@@ -64,23 +79,31 @@
       "title": "Regístrate",
       "footer1": "Al registrarte aceptas nuestros",
       "footer2": "y",
-      "alreadyAccount": "¿Ya tienes una cuenta?",
-      "dlgTitle": "Bienvenido",
-      "dlgMessage": "Recibirás un correo electrónico para confirmar tu cuenta."
+      "alreadyAccount": "¿Ya tienes una cuenta?"
     },
     "btn": {
       "join": "Unete"
+    },
+    "dlg": {
+      "main": {
+        "title": "Bienvenido",
+        "content": "Recibirás un correo electrónico para confirmar tu cuenta"
+      }
     }
   },
   "recoverPassword": {
     "txt": {
       "title": "Recuperar Contraseña",
       "subtitle": "Ingrese su correo electrónico para recibir instrucciones sobre cómo recuperar tu contraseña",
-      "dlgTitle": "Recuperar Contraseña",
-      "dlgMessage": "Recibirá un correo electrónico para poder cambiar su contraseña."
     },
     "btn": {
       "recover": "Recuperar"
+    },
+    "dlg": {
+      "main": {
+        "title": "Recuperar Contraseña",
+        "content": "Recibirá un correo electrónico para poder cambiar su contraseña"
+      }
     }
   },
   "resetPassword": {
@@ -88,12 +111,16 @@
       "title": "Restablecer Contraseña",
       "subtitle": "Ingrese una nueva contraseña",
       "expiredToken": "El token ha caducado, solicite un nuevo enlace para recuperar su contraseña",
-      "sendNewEmail": "Enviar nuevo correo electrónico",
-      "dlgTitle": "Restablecer Contraseña",
-      "dlgMessage": "Su contraseña ha sido actualizada, haga clic en Aceptar para continuar"
+      "sendNewEmail": "Enviar nuevo correo electrónico"
     },
     "btn": {
       "reset": "Reset"
+    },
+    "dlg": {
+      "main": {
+        "title": "Restablecer Contraseña",
+        "content": "Su contraseña ha sido actualizada, haga clic en Aceptar para continuar"
+      }
     }
   }
 }

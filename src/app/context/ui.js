@@ -5,9 +5,12 @@ import {DialogUI, BlockUI} from '@codepso/rn-helper';
 const UIContext = React.createContext({});
 
 const UIProvider = props => {
+  console.log('UI Provider--');
   const {bgColor, txtColor} = props;
   const animation = 'none'; // none, slide
   const message = i18n.t('app.txt.loading');
+  const txtOk = i18n.t('app.btn.ok');
+  const txtCancel = i18n.t('app.btn.cancel');
 
   const blockUI = createRef();
   const dialogUI = createRef();
@@ -17,12 +20,12 @@ const UIProvider = props => {
       blockUI,
       dialogUI
     });
-  });
+  }, [props]);
 
   return (
     <UIContext.Provider value={rootUI}>
       {props.children}
-      <DialogUI ref={dialogUI} />
+      <DialogUI ref={dialogUI} txtOk={txtOk} txtCancel={txtCancel} />
       <BlockUI ref={blockUI} bgColor={bgColor} txtColor={txtColor} animation={animation} message={message} />
     </UIContext.Provider>
   );

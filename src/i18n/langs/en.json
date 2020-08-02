@@ -11,7 +11,9 @@
     },
     "btn": {
       "signIn": "Sign In",
-      "signUp": "Sign Up"
+      "signUp": "Sign Up",
+      "ok": "Ok",
+      "cancel": "Cancel"
     },
     "form": {
       "firstName": {
