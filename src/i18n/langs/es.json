@@ -13,7 +13,8 @@
       "signIn": "Ingresar",
       "signUp": "Registrate",
       "ok": "Ok",
-      "cancel": "Cancelar"
+      "cancel": "Cancelar",
+      "update": "Actualizar"
     },
     "form": {
       "firstName": {
@@ -151,10 +152,13 @@
     "txt": {
       "selectPhoto": "Seleccionar foto de perfil",
       "removePhoto": "Remover foto actual",
-      "errorPhoto": "Error del selector de imagen"
+      "errorPhoto": "Error del selector de imagen",
+      "changes1": "Los cambios en tu(s)",
+      "changes2": "se reflejará en tu",
+      "account": "cuenta"
     },
     "dlg": {
-      "main": {
+      "update": {
         "title": "Perfil",
         "content": "Tu perfil ha sido actualizado"
       },
@@ -182,6 +186,12 @@
     },
     "btn": {
       "logout": "Salir"
+    }
+  },
+  "profileName": {
+    "header": {
+      "title": "Nombres",
+      "fields": "nombres"
     }
   }
 }

@@ -5,6 +5,7 @@ import * as Yup from 'yup';
 import {View} from 'react-native';
 import {connect} from 'react-redux';
 import {keys, pick} from 'lodash';
+import i18n from 'i18n-js';
 import {formStyle} from '../../assets/styles/form';
 import {MainHelper} from '@codepso/rn-helper';
 import {useGlobalUI} from '../../app/context/ui';
@@ -19,8 +20,8 @@ const NameForm = props => {
   const {dialogUI, blockUI} = useGlobalUI();
 
   const schema = Yup.object().shape({
-    firstName: Yup.string().required('Please enter your first name.'),
-    lastName: Yup.string().required('Please enter your last name.'),
+    firstName: Yup.string().required(i18n.t('app.form.firstName.rules.required')),
+    lastName: Yup.string().required(i18n.t('app.form.lastName.rules.required'))
   });
 
   const initialValues = pick(user, ['firstName', 'lastName']);
@@ -39,14 +40,14 @@ const NameForm = props => {
       props.dispatch(setAuthUser(payload));
 
       dialogUI.current.open(
-        'Account',
-        'Your profile has been updated',
+        i18n.t('profile.dlg.update.title'),
+        i18n.t('profile.dlg.update.content'),
         {navigation, screen: 'Profile'}
       );
     } catch (error) {
       blockUI.current.open(false);
       let message = MainHelper.getError(error);
-      dialogUI.current.open('Snap!', message);
+      dialogUI.current.open(i18n.t('app.txt.snap'), message);
     }
   };
 
@@ -62,11 +63,11 @@ const NameForm = props => {
       onSubmit={(values) => onSend(values)}>
       {(propsForm) => (
         <View style={formStyle.panForm}>
-          <ProfileHeader title="Names" fields="names" />
+          <ProfileHeader title={i18n.t('profileName.header.title')} fields={i18n.t('profileName.header.fields')} />
           <TextInput
             mode={'outlined'}
-            placeholder={'First Name'}
-            label={'First Name'}
+            placeholder={i18n.t('app.form.firstName.label')}
+            label={i18n.t('app.form.firstName.label')}
             value={propsForm.values.firstName}
             onChangeText={propsForm.handleChange('firstName')}
             onBlur={propsForm.handleBlur('firstName')}
@@ -77,8 +78,8 @@ const NameForm = props => {
           </HelperText>
           <TextInput
             mode={'outlined'}
-            placeholder={'Last Name'}
-            label={'Last Name'}
+            placeholder={i18n.t('app.form.lastName.label')}
+            label={i18n.t('app.form.lastName.label')}
             value={propsForm.values.lastName}
             onChangeText={propsForm.handleChange('lastName')}
             onBlur={propsForm.handleBlur('lastName')}
@@ -93,7 +94,7 @@ const NameForm = props => {
                 contentStyle={formStyle.btnMain}
                 style={{marginRight: 10}}
                 onPress={onCancel}>
-                Cancel
+                {i18n.t('app.btn.cancel')}
               </Button>
             </View>
             <View style={{width: '50%'}}>
@@ -102,7 +103,7 @@ const NameForm = props => {
                 contentStyle={formStyle.btnMain}
                 style={{marginLeft: 10}}
                 onPress={propsForm.handleSubmit}>
-                Update
+                {i18n.t('app.btn.update')}
               </Button>
             </View>
           </View>

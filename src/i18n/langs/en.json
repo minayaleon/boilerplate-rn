@@ -13,7 +13,8 @@
       "signIn": "Sign In",
       "signUp": "Sign Up",
       "ok": "Ok",
-      "cancel": "Cancel"
+      "cancel": "Cancel",
+      "update": "Update"
     },
     "form": {
       "firstName": {
@@ -151,10 +152,13 @@
     "txt": {
       "selectPhoto": "Select profile photo",
       "removePhoto": "Remove current photo",
-      "errorPhoto": "Image picker error"
+      "errorPhoto": "Image picker error",
+      "changes1": "Changes to your",
+      "changes2": "will be reflected across your",
+      "account": "account"
     },
     "dlg": {
-      "main": {
+      "update": {
         "title": "Profile",
         "content": "Your profile has been updated"
       },
@@ -182,6 +186,12 @@
     },
     "btn": {
       "logout": "Logout"
+    }
+  },
+  "profileName": {
+    "header": {
+      "title": "Names",
+      "fields": "names"
     }
   }
 }
