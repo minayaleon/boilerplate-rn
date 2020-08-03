@@ -16,8 +16,10 @@ import AppNavigator from './navigator/AppNavigator';
 import {linking} from "./navigator/linking";
 import {UIProvider} from './app/context/ui';
 import {changeTheme} from './redux/actions/app';
+import {useLocalization} from './i18n/localization';
 
 const Main = (props) => {
+  const {localizationConfigured} = useLocalization();
   const theme = props.app.theme;
   const defaultTheme = 'light';
   const checkThemeChange = useRef(false);
@@ -96,7 +98,7 @@ const Main = (props) => {
         ref={navigationRef}
       >
         <UIProvider bgColor={bgColor} txtColor={txtColor}>
-          <AppNavigator />
+          <AppNavigator localizationConfigured={localizationConfigured} />
         </UIProvider>
       </NavigationContainer>
     </PaperProvider>
