@@ -62,7 +62,9 @@ const GenderForm = (props) => {
       onSubmit={(values) => onSend(values)}>
       {(propsForm) => (
         <View style={formStyle.panForm}>
-          <ProfileHeader title={i18n.t('profileGender.header.title')} fields={i18n.t('profileGender.header.fields')} />
+          <ProfileHeader
+            title={i18n.t('profileGender.header.form.title')}
+            fields={i18n.t('profileGender.header.form.fields')} />
           <RadioButton.Group
             onValueChange={value => propsForm.setFieldValue('gender', value)}
             value={propsForm.values.gender}>

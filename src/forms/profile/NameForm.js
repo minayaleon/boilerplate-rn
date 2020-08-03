@@ -63,7 +63,9 @@ const NameForm = props => {
       onSubmit={(values) => onSend(values)}>
       {(propsForm) => (
         <View style={formStyle.panForm}>
-          <ProfileHeader title={i18n.t('profileName.header.title')} fields={i18n.t('profileName.header.fields')} />
+          <ProfileHeader
+            title={i18n.t('profileName.header.form.title')}
+            fields={i18n.t('profileName.header.form.fields')} />
           <TextInput
             mode={'outlined'}
             placeholder={i18n.t('app.form.firstName.label')}

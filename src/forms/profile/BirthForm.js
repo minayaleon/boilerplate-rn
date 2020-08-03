@@ -7,6 +7,7 @@ import {connect} from 'react-redux';
 import {isEmpty, keys, pick} from 'lodash';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import moment from 'moment';
+import i18n from 'i18n-js';
 import {formStyle} from '../../assets/styles/form';
 import {MainHelper} from '@codepso/rn-helper';
 import {useGlobalUI} from '../../app/context/ui';
@@ -24,6 +25,7 @@ const BirthForm = (props) => {
   const {colors} = useTheme();
   const minAge = 16;
   const maxDate = moment().subtract(minAge, 'years').toDate();
+  const locale = i18n.currentLocale();
 
   // Android Only
   const [show, setShow] = useState(false);
@@ -59,14 +61,14 @@ const BirthForm = (props) => {
       props.dispatch(setAuthUser(payload));
 
       dialogUI.current.open(
-        'Account',
-        'Your profile has been updated',
+        i18n.t('profile.dlg.update.title'),
+        i18n.t('profile.dlg.update.content'),
         {navigation, screen: 'Profile'}
       );
     } catch (error) {
       blockUI.current.open(false);
       let message = MainHelper.getError(error);
-      dialogUI.current.open('Snap!', message);
+      dialogUI.current.open(i18n.t('app.txt.snap'), message);
     }
   };
 
@@ -86,7 +88,9 @@ const BirthForm = (props) => {
       onSubmit={(values) => onSend(values)}>
       {(propsForm) => (
         <View style={formStyle.panForm}>
-          <ProfileHeader title="Birthday" fields="birthday" />
+          <ProfileHeader
+            title={i18n.t('profileBirth.header.form.title')}
+            fields={i18n.t('profileBirth.header.form.fields')} />
           {Platform.OS === 'android' &&
           <View style={{alignItems: 'center'}}>
             <View style={{flexDirection: 'row', width: 160}}>
@@ -102,12 +106,12 @@ const BirthForm = (props) => {
               </View>
             </View>
           </View>}
-          {Platform.OS === 'ios' || show && (
+          {(Platform.OS === 'ios' || show) && (
           <DateTimePicker
-            testID="dateTimePicker"
             value={propsForm.values.birth}
             mode="date"
             display="calendar"
+            locale={locale}
             onChange={(event, value) => {
               if (value !== undefined) {
                 if (Platform.OS === 'android') {
@@ -135,7 +139,7 @@ const BirthForm = (props) => {
                 contentStyle={formStyle.btnMain}
                 style={{marginRight: 10}}
                 onPress={onCancel}>
-                Cancel
+                {i18n.t('app.btn.cancel')}
               </Button>
             </View>
             <View style={{width: '50%'}}>
@@ -144,7 +148,7 @@ const BirthForm = (props) => {
                 contentStyle={formStyle.btnMain}
                 style={{marginLeft: 10}}
                 onPress={propsForm.handleSubmit}>
-                Update
+                {i18n.t('app.btn.update')}
               </Button>
             </View>
           </View>

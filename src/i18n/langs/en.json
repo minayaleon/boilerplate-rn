@@ -196,19 +196,43 @@
   },
   "profileName": {
     "header": {
-      "title": "Names",
-      "fields": "names"
+      "main": {
+        "title": "Profile",
+        "subtitle": "Name"
+      },
+      "form": {
+        "title": "Names",
+        "fields": "names"
+      }
     }
   },
   "profileGender": {
     "header": {
-      "title": "Gender",
-      "fields": "gender"
+      "main": {
+        "title": "Profile",
+        "subtitle": "Gender"
+      },
+      "form": {
+        "title": "Gender",
+        "fields": "gender"
+      }
     },
     "options": {
       "male": "Male",
       "female": "Female",
       "other": "Other"
+    }
+  },
+  "profileBirth": {
+    "header": {
+      "main": {
+        "title": "Profile",
+        "subtitle": "Birth"
+      },
+      "form": {
+        "title": "Birth",
+        "fields": "birth"
+      }
     }
   }
 }
