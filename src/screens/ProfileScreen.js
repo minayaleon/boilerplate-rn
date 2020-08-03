@@ -11,6 +11,7 @@ import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {profileStyle} from '../assets/styles/profile';
 import {useGlobalUI} from '../app/context/ui';
 import ImagePicker from 'react-native-image-picker';
+import i18n from 'i18n-js';
 import MeService from '../services/MeService';
 import {coreState} from '../redux/state';
 import {setAuthUser} from '../redux/actions/user';
@@ -29,20 +30,18 @@ const ProfileScreen = (props) => {
   const meService = new MeService();
   meService.setAccessToken(user.accessToken);
 
-  console.log('profile screen');
-
   const goToSignOut = () => {
     dialogUI.current.open(
-      'Log Out',
-      'Are you sure to log out?',
+      i18n.t('app.dlg.logout.title'),
+      i18n.t('app.dlg.logout.content'),
       {navigation, screen: 'SignOut'},
       true);
   };
 
   const selectPhoto = () => {
     const options = {
-      title: 'Select Profile Photo',
-      customButtons: [{ name: 'remove', title: 'Remove current photo' }],
+      title: i18n.t('profile.txt.selectPhoto'),
+      customButtons: [{ name: 'remove', title: i18n.t('profile.txt.removePhoto')}],
       storageOptions: {
         skipBackup: true
       },
@@ -52,7 +51,7 @@ const ProfileScreen = (props) => {
       if (response.didCancel) {
         // TODO
       } else if (response.error) {
-        dialogUI.current.open('ImagePicker Error', response.error);
+        dialogUI.current.open(i18n.t('profile.txt.errorPhoto'), response.error);
       } else if (response.customButton) {
         const formData = {photo: null};
         uploadPhoto(formData);
@@ -72,26 +71,26 @@ const ProfileScreen = (props) => {
         const payload = {...user, ...temp};
         props.dispatch(setAuthUser(payload));
         dialogUI.current.open(
-          'Account',
-          'Your photo profile has been updated'
+          i18n.t('profile.dlg.photo.title'),
+          i18n.t('profile.dlg.photo.content')
         );
       },
       (e) => {
         blockUI.current.open(false);
-        dialogUI.current.open('Snap!', e);
+        dialogUI.current.open(i18n.t('app.txt.snap'), e);
       }
     );
   };
 
   return (
     <SafeAreaView style={appStyle.panSafeArea} forceInset={{top: 'never'}}>
-      <Header content={{title: 'Profile'}} navigation={navigation} />
+      <Header content={{title: i18n.t('profile.header.title')}} navigation={navigation} />
       <ProfileAvatar user={user} selectPhoto={selectPhoto} section="profile" />
       <KeyboardAwareScrollView keyboardShouldPersistTaps="handled">
         <View style={formStyle.panContainer}>
           <List.Item
             title={user.name}
-            description="Names"
+            description={i18n.t('profile.list.names.description')}
             right={props => <List.Icon {...props} icon="chevron-right" />}
             titleStyle={profileStyle.listItemTitle}
             descriptionStyle={profileStyle.listItemDescription}
@@ -99,7 +98,7 @@ const ProfileScreen = (props) => {
           />
           <List.Item
             title={gender}
-            description="Gender"
+            description={i18n.t('profile.list.gender.description')}
             right={props => <List.Icon {...props} icon="chevron-right" />}
             titleStyle={profileStyle.listItemTitle}
             descriptionStyle={profileStyle.listItemDescription}
@@ -107,7 +106,7 @@ const ProfileScreen = (props) => {
           />
           <List.Item
             title={birth}
-            description="Birthday"
+            description={i18n.t('profile.list.birth.description')}
             right={props => <List.Icon {...props} icon="chevron-right" />}
             titleStyle={profileStyle.listItemTitle}
             descriptionStyle={profileStyle.listItemDescription}
@@ -115,7 +114,7 @@ const ProfileScreen = (props) => {
           />
           <List.Item
             title="*********"
-            description="Password"
+            description={i18n.t('profile.list.password.description')}
             right={props => <List.Icon {...props} icon="chevron-right" />}
             titleStyle={profileStyle.listItemTitle}
             descriptionStyle={profileStyle.listItemDescription}
@@ -123,13 +122,13 @@ const ProfileScreen = (props) => {
           />
           <List.Item
             title={country + code}
-            description="Country"
+            description={i18n.t('profile.list.country.description')}
             titleStyle={profileStyle.listItemTitle}
             descriptionStyle={profileStyle.listItemDescription}
           />
           <Divider style={appStyle.mrg10TB} />
           <Button mode="text" onPress={goToSignOut}>
-            Logout
+            {i18n.t('profile.btn.logout')}
           </Button>
         </View>
       </KeyboardAwareScrollView>

@@ -143,5 +143,41 @@
         "description": "Tema"
       }
     }
+  },
+  "profile": {
+    "header": {
+      "title": "Perfil"
+    },
+    "txt": {
+      "selectPhoto": "Seleccionar foto de perfil",
+      "removePhoto": "Remover foto actual",
+      "errorPhoto": "Error del selector de imagen"
+    },
+    "dlg": {
+      "photo": {
+        "title": "Perfil",
+        "content": "Tu foto de perfil ha sido actualizada"
+      }
+    },
+    "list": {
+      "names": {
+        "description": "Nombres"
+      },
+      "gender": {
+        "description": "Género"
+      },
+      "birth": {
+        "description": "Cumpleaños"
+      },
+      "password": {
+        "description": "Contraseña"
+      },
+      "country": {
+        "description": "País"
+      }
+    },
+    "btn": {
+      "logout": "Salir"
+    }
   }
 }

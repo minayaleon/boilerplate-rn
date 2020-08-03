@@ -143,5 +143,41 @@
         "description": "Theme"
       }
     }
+  },
+  "profile": {
+    "header": {
+      "title": "Profile"
+    },
+    "txt": {
+      "selectPhoto": "Select profile photo",
+      "removePhoto": "Remove current photo",
+      "errorPhoto": "Image picker error"
+    },
+    "dlg": {
+      "photo": {
+        "title": "Profile",
+        "content": "Your photo profile has been updated"
+      }
+    },
+    "list": {
+      "names": {
+        "description": "Names"
+      },
+      "gender": {
+        "description": "Gender"
+      },
+      "birth": {
+        "description": "Birthday"
+      },
+      "password": {
+        "description": "Password"
+      },
+      "country": {
+        "description": "Country"
+      }
+    },
+    "btn": {
+      "logout": "Logout"
+    }
   }
 }
