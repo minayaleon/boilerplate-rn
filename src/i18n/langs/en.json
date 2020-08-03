@@ -122,5 +122,11 @@
         "content": "Your password has been updated, click OK to continue"
       }
     }
+  },
+  "home": {
+    "header": {
+      "title": "Home",
+      "subtitle": "Welcome"
+    }
   }
 }

@@ -122,5 +122,11 @@
         "content": "Su contraseña ha sido actualizada, haga clic en Aceptar para continuar"
       }
     }
+  },
+  "home": {
+    "header": {
+      "title": "Home",
+      "subtitle": "Bienvenido"
+    }
   }
 }
