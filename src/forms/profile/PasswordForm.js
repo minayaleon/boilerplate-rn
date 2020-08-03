@@ -5,6 +5,7 @@ import * as Yup from 'yup';
 import {View} from 'react-native';
 import {connect} from 'react-redux';
 import {keys, pick} from 'lodash';
+import i18n from 'i18n-js';
 import {formStyle} from '../../assets/styles/form';
 import {MainHelper} from '@codepso/rn-helper';
 import {useGlobalUI} from '../../app/context/ui';
@@ -21,12 +22,12 @@ const PasswordForm = props => {
 
   const schema = Yup.object().shape({
     password: Yup.string()
-      .required('Please enter a password.')
-      .min(8, 'Password is too short, should be 8 chars minimum.'),
+      .required(i18n.t('app.form.password.rules.required'))
+      .min(8, i18n.t('app.form.password.rules.min')),
     passwordConfirmation: Yup.string()
-      .oneOf([Yup.ref('password'), null], 'Passwords must match')
-      .required('Please confirm your password.')
-      .min(8, 'Password is too short, should be 8 chars minimum.')
+      .oneOf([Yup.ref('password'), null], i18n.t('app.form.passwordConfirmation.rules.oneOf'))
+      .required(i18n.t('app.form.passwordConfirmation.rules.required'))
+      .min(8, i18n.t('app.form.passwordConfirmation.rules.min'))
   });
 
   const initialValues = {...formState.resetPassword};
@@ -45,14 +46,14 @@ const PasswordForm = props => {
       props.dispatch(setAuthUser(payload));
 
       dialogUI.current.open(
-        'Account',
-        'Your profile has been updated',
+        i18n.t('profile.dlg.update.title'),
+        i18n.t('profile.dlg.update.content'),
         {navigation, screen: 'Profile'}
       );
     } catch (error) {
       blockUI.current.open(false);
       let message = MainHelper.getError(error);
-      dialogUI.current.open('Snap!', message);
+      dialogUI.current.open(i18n.t('app.txt.snap'), message);
     }
   };
 
@@ -68,10 +69,12 @@ const PasswordForm = props => {
       onSubmit={(values) => onSend(values)}>
       {(propsForm) => (
         <View style={formStyle.panForm}>
-          <ProfileHeader title="Password" fields="password" />
+          <ProfileHeader
+            title={i18n.t('profilePassword.header.form.title')}
+            fields={i18n.t('profilePassword.header.form.fields')} />
           <TextInput
             mode={'outlined'}
-            placeholder={'Password'}
+            placeholder={i18n.t('app.form.password.label')}
             secureTextEntry={true}
             value={propsForm.values.password}
             onChangeText={propsForm.handleChange('password')}
@@ -84,7 +87,7 @@ const PasswordForm = props => {
           <TextInput
             mode={'outlined'}
             secureTextEntry={true}
-            placeholder={'Confirm Password'}
+            placeholder={i18n.t('app.form.passwordConfirmation.label')}
             value={propsForm.values.passwordConfirmation}
             onChangeText={propsForm.handleChange('passwordConfirmation')}
             onBlur={propsForm.handleBlur('passwordConfirmation')}
@@ -99,7 +102,7 @@ const PasswordForm = props => {
                 contentStyle={formStyle.btnMain}
                 style={{marginRight: 10}}
                 onPress={onCancel}>
-                Cancel
+                {i18n.t('app.btn.cancel')}
               </Button>
             </View>
             <View style={{width: '50%'}}>
@@ -108,7 +111,7 @@ const PasswordForm = props => {
                 contentStyle={formStyle.btnMain}
                 style={{marginLeft: 10}}
                 onPress={propsForm.handleSubmit}>
-                Update
+                {i18n.t('app.btn.update')}
               </Button>
             </View>
           </View>

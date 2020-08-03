@@ -188,7 +188,7 @@
         "description": "Género"
       },
       "birth": {
-        "description": "Cumpleaños"
+        "description": "Fecha de nacimiento"
       },
       "password": {
         "description": "Contraseña"
@@ -234,11 +234,23 @@
     "header": {
       "main": {
         "title": "Perfil",
-        "subtitle": "Fecha de Nacimiento"
+        "subtitle": "Fecha de nacimiento"
       },
       "form": {
-        "title": "Fecha de Nacimiento",
+        "title": "Fecha de nacimiento",
         "fields": "fecha de nacimiento"
+      }
+    }
+  },
+  "profilePassword": {
+    "header": {
+      "main": {
+        "title": "Perfil",
+        "subtitle": "Contraseña"
+      },
+      "form": {
+        "title": "Contraseña",
+        "fields": "contraseña"
       }
     }
   }
