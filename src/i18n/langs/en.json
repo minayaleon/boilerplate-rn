@@ -154,6 +154,10 @@
       "errorPhoto": "Image picker error"
     },
     "dlg": {
+      "main": {
+        "title": "Profile",
+        "content": "Your profile has been updated"
+      },
       "photo": {
         "title": "Profile",
         "content": "Your photo profile has been updated"

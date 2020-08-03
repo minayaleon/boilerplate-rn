@@ -154,6 +154,10 @@
       "errorPhoto": "Error del selector de imagen"
     },
     "dlg": {
+      "main": {
+        "title": "Perfil",
+        "content": "Tu perfil ha sido actualizado"
+      },
       "photo": {
         "title": "Perfil",
         "content": "Tu foto de perfil ha sido actualizada"
