@@ -13,13 +13,14 @@ import {coreState} from '../../redux/state';
 import {setAuthUser} from '../../redux/actions/user';
 import ProfileHeader from '../../components/ProfileHeader';
 import * as navigation from '../../navigator/RootNavigation';
+import i18n from "i18n-js";
 
 const GenderForm = (props) => {
   const {user} = props;
   const {dialogUI, blockUI} = useGlobalUI();
 
   const schema = Yup.object().shape({
-    gender: Yup.string().required('Please enter your gender.').nullable(),
+    gender: Yup.string().required(i18n.t('app.form.gender.rules.required')).nullable(),
   });
 
   const initialValues = pick(user, ['gender']);
@@ -38,14 +39,14 @@ const GenderForm = (props) => {
       props.dispatch(setAuthUser(payload));
 
       dialogUI.current.open(
-        'Account',
-        'Your profile has been updated',
+        i18n.t('profile.dlg.update.title'),
+        i18n.t('profile.dlg.update.content'),
         {navigation, screen: 'Profile'}
       );
     } catch (error) {
       blockUI.current.open(false);
       let message = MainHelper.getError(error);
-      dialogUI.current.open('Snap!', message);
+      dialogUI.current.open(i18n.t('app.txt.snap'), message);
     }
   };
 
@@ -61,13 +62,13 @@ const GenderForm = (props) => {
       onSubmit={(values) => onSend(values)}>
       {(propsForm) => (
         <View style={formStyle.panForm}>
-          <ProfileHeader title="Gender" fields="gender" />
+          <ProfileHeader title={i18n.t('profileGender.header.title')} fields={i18n.t('profileGender.header.fields')} />
           <RadioButton.Group
             onValueChange={value => propsForm.setFieldValue('gender', value)}
             value={propsForm.values.gender}>
-            <RadioButton.Item label="Male" value="M" />
-            <RadioButton.Item label="Female" value="F" />
-            <RadioButton.Item label="Other" value="O" />
+            <RadioButton.Item label={i18n.t('profileGender.options.male')} value="M" />
+            <RadioButton.Item label={i18n.t('profileGender.options.female')} value="F" />
+            <RadioButton.Item label={i18n.t('profileGender.options.other')} value="O" />
           </RadioButton.Group>
           <HelperText type="error">
             {propsForm.touched.gender && propsForm.errors.gender}
@@ -79,7 +80,7 @@ const GenderForm = (props) => {
                 contentStyle={formStyle.btnMain}
                 style={{marginRight: 10}}
                 onPress={onCancel}>
-                Cancel
+                {i18n.t('app.btn.cancel')}
               </Button>
             </View>
             <View style={{width: '50%'}}>
@@ -88,7 +89,7 @@ const GenderForm = (props) => {
                 contentStyle={formStyle.btnMain}
                 style={{marginLeft: 10}}
                 onPress={propsForm.handleSubmit}>
-                Update
+                {i18n.t('app.btn.update')}
               </Button>
             </View>
           </View>

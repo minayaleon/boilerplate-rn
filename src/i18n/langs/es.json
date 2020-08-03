@@ -50,6 +50,12 @@
           "required": "Confirma tu contraseña.",
           "min": "La contraseña debe tener al menos 8 caracteres."
         }
+      },
+      "gender": {
+        "label": "Género",
+        "rules": {
+          "required": "Seleccione tu género."
+        }
       }
     },
     "nav": {
@@ -192,6 +198,17 @@
     "header": {
       "title": "Nombres",
       "fields": "nombres"
+    }
+  },
+  "profileGender": {
+    "header": {
+      "title": "Género",
+      "fields": "género"
+    },
+    "options": {
+      "male": "Masculino",
+      "female": "Femenino",
+      "other": "Otro"
     }
   }
 }
