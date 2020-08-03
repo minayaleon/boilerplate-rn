@@ -20,41 +20,48 @@
       "firstName": {
         "label": "First Name",
         "rules": {
-          "required": "Enter your first name."
+          "required": "Enter your first name"
         }
       },
       "lastName": {
         "label": "Last Name",
         "rules": {
-          "required": "Enter your last name."
+          "required": "Enter your last name"
         }
       },
       "email": {
         "label": "Email",
         "rules": {
-          "type": "Invalid email.",
-          "required": "Enter your email address."
+          "type": "Invalid email",
+          "required": "Enter your email address"
         }
       },
       "password": {
         "label": "Password",
         "rules": {
-          "required": "Please enter a password.",
-          "min": "Password must be at least 8 characters."
+          "required": "Please enter a password",
+          "min": "Password must be at least 8 characters"
         }
       },
       "passwordConfirmation": {
         "label": "Confirm Password",
         "rules": {
           "oneOf": "Passwords must match",
-          "required": "Please confirm your password.",
-          "min": "Password must be at least 8 characters."
+          "required": "Please confirm your password",
+          "min": "Password must be at least 8 characters"
         }
       },
       "gender": {
         "label": "Gender",
         "rules": {
-          "required": "Choose your gender."
+          "required": "Choose your gender"
+        }
+      },
+      "birth": {
+        "label": "Birth",
+        "rules": {
+          "required": "Enter you date of birth",
+          "max": "Must be {{minAge}} years or older"
         }
       }
     },

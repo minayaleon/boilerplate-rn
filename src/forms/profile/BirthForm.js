@@ -34,8 +34,8 @@ const BirthForm = (props) => {
 
   const validationSchema = Yup.object().shape({
     birth: Yup.date()
-      .required('Please enter your birthday.')
-      .max(maxDate, `Must be ${minAge} years or older`)
+      .required(i18n.t('app.form.birth.rules.required'))
+      .max(maxDate, i18n.t('app.form.birth.rules.max', {minAge}))
   });
 
   const initialValues = pick(user, ['birth']);

@@ -20,41 +20,48 @@
       "firstName": {
         "label": "Nombres",
         "rules": {
-          "required": "Ingresa tus nombres."
+          "required": "Ingresa tus nombres"
         }
       },
       "lastName": {
         "label": "Apellidos",
         "rules": {
-          "required": "Ingresa tus apellidos."
+          "required": "Ingresa tus apellidos"
         }
       },
       "email": {
         "label": "Correo Electrónico",
         "rules": {
-          "type": "Correo electrónico inválido.",
-          "required": "Ingresa tu correo electrónico."
+          "type": "Correo electrónico inválido",
+          "required": "Ingresa tu correo electrónico"
         }
       },
       "password": {
         "label": "Contraseña",
         "rules": {
-          "required": "Ingresa tu contraseña.",
-          "min": "La contraseña debe tener al menos 8 caracteres."
+          "required": "Ingresa tu contraseña",
+          "min": "La contraseña debe tener al menos 8 caracteres"
         }
       },
       "passwordConfirmation": {
         "label": "Confirmar Contraseña",
         "rules": {
-          "oneOf": "Las contraseñas deben coincidir.",
-          "required": "Confirma tu contraseña.",
-          "min": "La contraseña debe tener al menos 8 caracteres."
+          "oneOf": "Las contraseñas deben coincidir",
+          "required": "Confirma tu contraseña",
+          "min": "La contraseña debe tener al menos 8 caracteres"
         }
       },
       "gender": {
         "label": "Género",
         "rules": {
-          "required": "Seleccione tu género."
+          "required": "Seleccione tu género"
+        }
+      },
+      "birth": {
+        "label": "Birth",
+        "rules": {
+          "required": "Ingrese su fecha de nacimiento",
+          "max": "Debe tener {{minAge}} años o más"
         }
       }
     },
