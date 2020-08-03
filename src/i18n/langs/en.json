@@ -128,5 +128,20 @@
       "title": "Home",
       "subtitle": "Welcome"
     }
+  },
+  "preferences": {
+    "header": {
+      "title": "Preferences"
+    },
+    "list": {
+      "manageTheme": {
+        "title": "Manage Theme",
+        "description": "Theme"
+      },
+      "darkMode": {
+        "title": "Dark mode",
+        "description": "Theme"
+      }
+    }
   }
 }

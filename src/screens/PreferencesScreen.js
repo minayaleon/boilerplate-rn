@@ -7,6 +7,7 @@ import Header from '../components/app/Header';
 import {formStyle} from '../assets/styles/form';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {List, Switch} from 'react-native-paper';
+import i18n from 'i18n-js';
 import {profileStyle} from '../assets/styles/profile';
 import {changeTheme, setManageTheme} from '../redux/actions/app';
 
@@ -29,19 +30,19 @@ const PreferencesScreen = (props) => {
 
   return (
     <SafeAreaView style={appStyle.panSafeArea} forceInset={{top: 'never'}}>
-      <Header content={{title: 'Preferences'}} navigation={navigation} />
+      <Header content={{title: i18n.t('preferences.header.title')}} navigation={navigation} />
       <KeyboardAwareScrollView keyboardShouldPersistTaps="handled">
         <View style={formStyle.panContainer}>
           <List.Item
-            title="Manage Theme"
-            description="Theme"
+            title={i18n.t('preferences.list.manageTheme.title')}
+            description={i18n.t('preferences.list.manageTheme.description')}
             right={() => <Switch style={{marginTop: 10}} value={app.manageTheme} onValueChange={onManageTheme} />}
             titleStyle={profileStyle.listItemTitle}
             descriptionStyle={profileStyle.listItemDescription}
           />
           <List.Item
-            title="Dark Mode"
-            description="Theme"
+            title={i18n.t('preferences.list.darkMode.title')}
+            description={i18n.t('preferences.list.darkMode.description')}
             right={() =>
               <Switch
                 style={{marginTop: 10}}
