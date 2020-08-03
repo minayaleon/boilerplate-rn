@@ -21,7 +21,6 @@ const SplashNavigator = () => (
 );
 
 const AppNavigator = (props) => {
-  console.log('AppNavigator--');
   const [state, dispatch] = useReducer(appReducer, initialState);
 
   useEffect(() => {

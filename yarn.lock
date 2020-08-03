@@ -734,10 +734,10 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@codepso/rn-helper@^1.0.12":
-  version "1.0.12"
-  resolved "https://registry.yarnpkg.com/@codepso/rn-helper/-/rn-helper-1.0.12.tgz#3dcb0772a084e578d3678b1f6bcc05deca0aefc7"
-  integrity sha512-3NvR6AfO5VqF6H4YsjLteSxR3166sTYIje+ZZ7QolINoAb6bvKB5EiXB1KT/Xvz+h1Py6RoXLp53/8K8J1MSwQ==
+"@codepso/rn-helper@^1.0.13":
+  version "1.0.13"
+  resolved "https://registry.yarnpkg.com/@codepso/rn-helper/-/rn-helper-1.0.13.tgz#0ad138313ff35930855eb49483487c4c12d38fa8"
+  integrity sha512-qeKEBtZTVzr84s2GKRTBddy+wbg5VnWo+M6zR1jYq6RNV/LX4vXXWzo7wfAYfrqMi6hUKI0LaT1AIerhU09sPA==
 
 "@egjs/hammerjs@^2.0.17":
   version "2.0.17"

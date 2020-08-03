@@ -5,7 +5,6 @@ import {DialogUI, BlockUI} from '@codepso/rn-helper';
 const UIContext = React.createContext({});
 
 const UIProvider = props => {
-  console.log('UI Provider--');
   const {bgColor, txtColor} = props;
   const animation = 'none'; // none, slide
   const message = i18n.t('app.txt.loading');
@@ -20,7 +19,7 @@ const UIProvider = props => {
       blockUI,
       dialogUI
     });
-  }, [props]);
+  });
 
   return (
     <UIContext.Provider value={rootUI}>
