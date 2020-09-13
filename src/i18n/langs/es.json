@@ -108,7 +108,7 @@
   "recoverPassword": {
     "txt": {
       "title": "Recuperar Contraseña",
-      "subtitle": "Ingrese su correo electrónico para recibir instrucciones sobre cómo recuperar tu contraseña",
+      "subtitle": "Ingrese su correo electrónico para recibir instrucciones sobre cómo recuperar tu contraseña"
     },
     "btn": {
       "recover": "Recuperar"
